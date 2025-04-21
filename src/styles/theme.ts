@@ -1,21 +1,25 @@
 
 export const theme = {
-    colors: {
-      woodBrown: '#4A2C2A',
-      agedGold: '#D4A017',
-      darkGreen: '#1A3C34',
-      cream: '#F5E8C7',
-      darkGray: '#333333',
-      white: '#FFFFFF',
-    },
-    fonts: {
-      title: "'Playfair Display', serif",
-      body: "'Montserrat', sans-serif",
-    },
-    spacing: {
-      sm: '8px',
-      md: '16px',
-      lg: '24px',
-      xl: '32px',
-    },
-  };
+  colors: {
+    deepBlack: '#0A0A0A',
+    vibrantGold: '#FFD700',
+    blueGray: '#2A2F4F',
+    white: '#FFFFFF',
+    neonRed: '#FF2E63',
+  },
+  fonts: {
+    title: "'Bebas Neue', sans-serif",
+    body: "'Inter', sans-serif",
+  },
+  spacing: {
+    xs: '8px',
+    sm: '12px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
+  },
+  breakpoints: {
+    mobile: '768px',
+    tablet: '1024px',
+  },
+};
