@@ -9,8 +9,8 @@ interface ButtonProps {
 }
 
 const StyledButton = styled(motion.button)`
-  background: linear-gradient(45deg, ${theme.colors.vibrantGold}, ${theme.colors.neonRed});
-  color: ${theme.colors.white};
+  background: linear-gradient(45deg, ${theme.colors.pastelRed}, ${theme.colors.pastelBlue});
+  color: ${theme.colors.pastelWhite};
   font-family: ${theme.fonts.body};
   font-weight: 600;
   font-size: 16px;
@@ -27,7 +27,7 @@ const StyledButton = styled(motion.button)`
   }
 
   &:disabled {
-    background: ${theme.colors.blueGray};
+    background: ${theme.colors.softGray};
     cursor: not-allowed;
   }
 

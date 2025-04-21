@@ -17,12 +17,12 @@ const Form = styled.form`
 `;
 
 const LinkText = styled(Link)`
-  color: ${theme.colors.vibrantGold};
+  color: ${theme.colors.pastelBlue};
   text-decoration: none;
   font-family: ${theme.fonts.body};
   font-size: 14px;
   text-align: center;
-  margin-top: ${theme.spacing.md};
+  margin-top: 30px;
 
   &:hover {
     text-decoration: underline;
@@ -31,7 +31,7 @@ const LinkText = styled(Link)`
 
 const FormTitle = styled.h2`
   font-family: ${theme.fonts.title};
-  color: ${theme.colors.vibrantGold};
+  color: ${theme.colors.pastelBlue};
   font-size: 28px;
   text-align: center;
   margin-bottom: ${theme.spacing.lg};
@@ -52,8 +52,8 @@ function Login ()  {
   };
 
   return (
-    <AuthSplitContainer title="Entrar">
-      <FormTitle>Entrar</FormTitle>
+    <AuthSplitContainer title="">
+      <FormTitle>Entre e encontre sua barbearia</FormTitle>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"

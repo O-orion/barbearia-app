@@ -1,11 +1,10 @@
-
 export const theme = {
   colors: {
-    deepBlack: '#0A0A0A',
-    vibrantGold: '#FFD700',
-    blueGray: '#2A2F4F',
-    white: '#FFFFFF',
-    neonRed: '#FF2E63',
+    pastelBlue: '#A3BFFA',
+    pastelRed: '#FCA5A5',
+    pastelWhite: '#F5F5F5',
+    softGray: '#E2E8F0',
+    softBlack: '#2D3748',
   },
   fonts: {
     title: "'Bebas Neue', sans-serif",

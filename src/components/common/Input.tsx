@@ -25,18 +25,18 @@ const StyledInput = styled(motion.input)`
   padding-left: 40px; /* Espaço para ícone */
   font-family: ${theme.fonts.body};
   font-size: 16px;
-  color: ${theme.colors.white};
+  color: ${theme.colors.softBlack};
   width: 100%;
   outline: none;
   transition: all 0.3s ease;
 
   &:focus {
-    border-color: ${theme.colors.vibrantGold};
+    border-color: ${theme.colors.pastelBlue};
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
   }
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: ${theme.colors.softGray};
   }
 `;
 
@@ -45,12 +45,12 @@ const Icon = styled.span`
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: ${theme.colors.vibrantGold};
+  color: ${theme.colors.pastelRed};
   font-size: 20px;
 `;
 
 const ErrorMessage = styled(motion.span)`
-  color: ${theme.colors.neonRed};
+  color: ${theme.colors.pastelRed};
   font-size: 12px;
   position: absolute;
   bottom: -20px;

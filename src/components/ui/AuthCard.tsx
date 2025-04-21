@@ -11,8 +11,8 @@ interface AuthSplitContainerProps {
 
 const Container = styled(motion.div)`
   display: flex;
-  min-height: 100vh;
-  background: ${theme.colors.deepBlack};
+  min-height: 90vh;
+  background: ${theme.colors.pastelWhite};
 
   @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: column;
@@ -27,7 +27,8 @@ const LeftSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${theme.colors.white};
+  color: ${theme.colors.pastelWhite};
+  border-radius:  8px;
 
   &::before {
     content: '';
@@ -36,7 +37,8 @@ const LeftSection = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Overlay escuro */
+    background: rgba(0, 0, 0, 0.6); /* Overlay escuro */
+    border-radius: 8px 0px 0px 8px;
   }
 
   @media (max-width: ${theme.breakpoints.mobile}) {
@@ -49,8 +51,9 @@ const RightSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, ${theme.colors.deepBlack}, ${theme.colors.blueGray});
+  background: linear-gradient(135deg, ${theme.colors.pastelRed}, ${theme.colors.softGray});
   padding: ${theme.spacing.xl};
+  border-radius: 0px 8px 8px 0;
 
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: ${theme.spacing.lg};
@@ -59,10 +62,11 @@ const RightSection = styled.div`
 
 const Title = styled(motion.h1)`
   font-family: ${theme.fonts.title};
+  color:rgb(233, 229, 12);
+  font-weight: 900;
   font-size: 48px;
-  color: ${theme.colors.vibrantGold};
   text-align: center;
-  margin-bottom: ${theme.spacing.md};
+  margin-bottom: ${theme.spacing.xs};
   position: relative;
   z-index: 1;
 
@@ -72,6 +76,8 @@ const Title = styled(motion.h1)`
 `;
 
 const Subtitle = styled(motion.p)`
+  color: ${theme.colors.pastelWhite};
+  font-weight: 500;
   font-family: ${theme.fonts.body};
   font-size: 18px;
   text-align: center;
@@ -85,7 +91,7 @@ const Subtitle = styled(motion.p)`
 `;
 
 const Card = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05); /* Glassmorphism */
+  background: ${theme.colors.softBlack}; /* Glassmorphism */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
