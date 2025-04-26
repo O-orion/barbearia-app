@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import image from '../../assets/barbearia.jpg';
 import { theme } from '../../styles/theme';
+import { useState } from 'react';
 
 const Container = styled.div`
   display: grid;
@@ -38,9 +39,9 @@ const BarberCard = styled(motion.div)`
 `;
 
 const BarberImage = styled.img`
-  width: 100px; /* Aumentei a largura */
-  height: 100px; /* Altura fixa para proporção quadrada */
-  object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 8px;
   margin-right: 15px;
 `;
@@ -50,14 +51,14 @@ const InfoWrapper = styled.div`
 `;
 
 const BarberTitle = styled.h3`
-  color: #6D8299; /* Azul Aço Suave */
-  font-family: 'Playfair Display', serif; /* Fonte vintage */
+  color: #6D8299;
+  font-family: 'Playfair Display', serif;
   font-size: 18px;
   margin: 0 0 5px;
 `;
 
 const BarberDetails = styled.p`
-  color: #8A7F7F; /* Cinza Quente */
+  color: #8A7F7F;
   font-size: 14px;
   margin: 2px 0;
 `;
@@ -72,12 +73,12 @@ const StatusBadge = styled.span<StatusBadgeProps>`
   border-radius: 12px;
   font-size: 12px;
   color: #F5E8C7;
-  background: ${(props) => (props.isOpen ? '#A8C6B5' : '#C66A6A')}; /* Verde Menta ou Vermelho Tijolo */
+  background: ${(props) => (props.isOpen ? '#A8C6B5' : '#C66A6A')};
 `;
 
 const CTAButton = styled(motion.button)`
-  background: ${ theme.colors.pastelBlue }; /* Vermelho Tijolo */
-  color: #F5E8C7; /* Creme Marfim */
+  background: ${ theme.colors.pastelBlue };
+  color: #F5E8C7;
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
@@ -86,12 +87,82 @@ const CTAButton = styled(motion.button)`
   margin-top: 5px;
 `;
 
+
+const FilterTitle = styled.h2`
+  color: #6D8299;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+const FilterSection = styled.div`
+  margin-bottom: 20px;
+`;
+
+const FilterLabel = styled.label`
+  display: block;
+  color: #6D8299;
+  font-size: 16px;
+  margin-bottom: 8px;
+`;
+
+const RangeInput = styled.input`
+  width: 100%;
+  accent-color: ${theme.colors.pastelRed};
+`;
+
+const RangeValue = styled.span`
+  color: #8A7F7F;
+  font-size: 14px;
+  margin-left: 10px;
+`;
+
+const SelectInput = styled.select`
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #8A7F7F;
+  border-radius: 5px;
+  color:rgb(240, 165, 2);
+  font-size: 14px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color:rgb(198, 168, 168);
+  }
+`;
+
+const ApplyButton = styled(motion.button)`
+  background: ${theme.colors.pastelRed};
+  color:rgb(255, 255, 255);
+  font-weight: 700;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 10px;
+`;
+
+
 export default function GridUI() {
   const barbershops = [
     { name: 'Barbearia Vintage', distance: '1.2 km', rating: '★★★★☆', price: 'R$ 50,00', isOpen: true },
     { name: 'Old School Cuts', distance: '2.5 km', rating: '★★★☆☆', price: 'R$ 40,00', isOpen: false },
     { name: 'Classic Barber', distance: '0.8 km', rating: '★★★★★', price: 'R$ 60,00', isOpen: true },
   ];
+
+  const [distance, setDistance] = useState(10); // Distância em km (0 a 20)
+  const [priceRange, setPriceRange] = useState([20, 100]); // Intervalo de preço
+  const [rating, setRating] = useState(3); // Rating mínimo (1 a 5)
+
+  // Função para aplicar os filtros
+  const handleApplyFilters = () => {
+    console.log('Filtros aplicados:', { distance, priceRange, rating });
+    // Aqui você pode passar os valores para o componente pai ou fazer uma requisição para filtrar as barbearias
+  };
+
 
   return (
     <Container>
@@ -100,8 +171,72 @@ export default function GridUI() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 style={{ color: '#6D8299' }}>Filtros</h2>
-       
+        <FilterCard
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <FilterTitle>Filtros</FilterTitle>
+
+      {/* Filtro de Distância */}
+      <FilterSection>
+        <FilterLabel>Distância (km)</FilterLabel>
+        <RangeInput
+          type="range"
+          min="0"
+          max="20"
+          value={distance}
+          onChange={(e) => setDistance(Number(e.target.value))}
+        />
+        <RangeValue>{distance} km</RangeValue>
+      </FilterSection>
+
+      {/* Filtro de Preço */}
+      <FilterSection>
+        <FilterLabel>Preço (R$)</FilterLabel>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <RangeInput
+            type="range"
+            min="10"
+            max="150"
+            value={priceRange[0]}
+            onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
+          />
+          <RangeInput
+            type="range"
+            min="10"
+            max="150"
+            value={priceRange[1]}
+            onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+          />
+        </div>
+        <RangeValue>
+          R$ {priceRange[0]} - R$ {priceRange[1]}
+        </RangeValue>
+      </FilterSection>
+
+      {/* Filtro de Rating */}
+      <FilterSection>
+        <FilterLabel>Rating Mínimo</FilterLabel>
+        <SelectInput value={rating} onChange={(e) => setRating(Number(e.target.value))}>
+          <option value={1}>★☆☆☆☆ (1+)</option>
+          <option value={2}>★★☆☆☆ (2+)</option>
+          <option value={3}>★★★☆☆ (3+)</option>
+          <option value={4}>★★★★☆ (4+)</option>
+          <option value={5}>★★★★★ (5)</option>
+        </SelectInput>
+      </FilterSection>
+
+      {/* Botão de Aplicar */}
+      <ApplyButton
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleApplyFilters}
+      >
+        Aplicar Filtros
+      </ApplyButton>
+    </FilterCard>
+        
       </FilterCard>
       <div>
         {barbershops.map((barber, i) => (
